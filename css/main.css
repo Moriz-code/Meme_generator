@@ -18,3 +18,12 @@ header, h3{
     text-align: center;
     background-color: antiquewhite;
 }
+
+.tool-box>button{
+    background-color: transparent;
+}
+
+.tool-box>button>img{
+    width: 25px;
+    height: 25px;
+}

@@ -1,0 +1,21 @@
+/* grid-helpers */
+
+.text-center{
+    text-align: center;
+}
+
+.display-grid{
+    display: grid;
+}
+
+.align-i-start{
+    align-items:start;
+}
+
+.align-i-end{
+    align-items:end;
+}
+
+.align-i-center{
+    align-items:center;
+}
