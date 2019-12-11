@@ -2,10 +2,10 @@ let gCanvas, gCtx, gImg
 
 let gCurrentStyle = {
     tool: 'text',
-    fillColor: 'black',
+    fillColor: 'pink',
     strokeColor: 'black',
     strokeWidth: 1,
-    font: '120px Impact',
+    font: '50px Impact',
     align: 'left',
 }
 
@@ -17,6 +17,7 @@ let gCurrentPos = {
 function init() {
     renderPicsToGallry();
     initCanvas();
+    applyCurrentStyle();
 }
 
 function renderPicsToGallry() {
@@ -28,6 +29,7 @@ function renderPicsToGallry() {
 }
 
 function onImgClick(imgID) {
+    document.querySelector('.canvas-container').hidden = false;
     updateMemeImgId(imgID);
     renderCanvas();
 }
@@ -53,11 +55,8 @@ function applyCurrentStyle() {
 
 function drawImg(imgID) {
     gImg = new Image();
-    gImg.onload = () => {
-        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-    }
     gImg.src = getImgByID(imgID).url
- 
+    gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height) 
 }
 
 function resizeCanvas(img) {
@@ -70,16 +69,14 @@ function onSetTool(tool) {
 
 function onTextChange(ev) {
     updateMemeTxt(ev.target.id, ev.target.value, gCurrentStyle)
-    meme = getMemeToRender();
-    drawText(meme.txts)
-    // renderCanvas(); 
+    renderCanvas();
+    // meme = getMemeToRender();
+    // drawText(meme.txts)
 }
 
 
 function drawText(txts) {
     for (var i = 0; i < txts.length; i++) {
-        // console.log('drawText')
-        // document.querySelector('.line' + i).innerText = txts[i].line
         gCtx.fillText(txts[i].line, 100, 100);
         gCtx.strokeText(txts[i].line, 100, 100);
     }

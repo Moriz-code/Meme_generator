@@ -3,3 +3,18 @@
     height:150px;
 }
 
+.gallery-container li{
+list-style: none;
+display: inline;
+padding: 5px;
+}
+
+
+header, h3{
+    font-family: 'Roboto', sans-serif;
+}
+
+.canvas-container{
+    text-align: center;
+    background-color: antiquewhite;
+}

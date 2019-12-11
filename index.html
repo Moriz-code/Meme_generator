@@ -6,23 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Meme Generator</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./css/main.css" class="css" />
     <link rel="stylesheet" href="./css/mediaQueries.css" class="css" />
   </head>
   <body onload="init()">
     <!-- gallery -->
+
+<header>
     <h1>MEME</h1>
     <h2>MEME made by ME</h2>
-    <div><ul class="gallery-container"></ul></div>
+    
+    
+</header>
+<div class="canvas-container" hidden>
+        <h3>Edit it much as you want</h3>
+        <div class="tool-box" >
+                <input class="line0" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
+        </div>
+  <canvas class="main-canvas" width="300" height="300"></canvas>
+</div>
 
+    <div>
+            <h3>Pick up a picture</h3>
+        <ul class="gallery-container"></ul></div>
     <!-- canvas -->
-    <div class="tool-box">
-    <input class="line0" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
-    </div>
 
-    <div class="canvas-container">
-      <canvas class="main-canvas" width="300" height="300"></canvas>
-    </div>
+
+ 
+
     <script src="./js/storageService.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/memeController.js"></script>
