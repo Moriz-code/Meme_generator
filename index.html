@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Meme Generator</title>
 
-    <link rel="stylesheet" href="./css/main.css" class="css">
-    <link rel="stylesheet" href="./css/mediaQueries.css" class="css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/main.css" class="css" />
+    <link rel="stylesheet" href="./css/mediaQueries.css" class="css" />
+  </head>
+  <body onload="init()">
+    <!-- gallery -->
+    <div><ul class="gallery-container"></ul></div>
 
-    <script src="./js/main.js"></script>
+    <!-- canvas -->
+    <div class="canvas-container">
+      <canvas class="main-canvas" width="300" height="300"></canvas>
+
+      <div class="tool-box">
+            <button onclick="setShape('text')">Ⓐ</button>
+      </div>
+    </div>
+
+    <script src="./js/storageService.js"></script>
     <script src="./js/utils.js"></script>
-    
-</body>
+    <script src="./js/memeController.js"></script>
+    <script src="./js/memeService.js"></script>
+  </body>
 </html>
