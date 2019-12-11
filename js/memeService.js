@@ -26,7 +26,6 @@ let gMeme = {
         size: 20,
         align: 'left',
         color: 'red',
-
     }]
 }
 

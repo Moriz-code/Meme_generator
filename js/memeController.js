@@ -27,7 +27,7 @@ function initCanvas(imgID) {
     drawImg();
 }
 
-function drawImg(){
+function drawImg() {
     gImg = new Image();
     gImg.onload = () => {
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
@@ -36,7 +36,7 @@ function drawImg(){
 }
 
 function resizeCanvas(img) {
-  //TODO: change the canvas size according to the picture size and screen size. 
+    //TODO: change the canvas size according to the picture size and screen size. 
 }
 
 
@@ -46,18 +46,6 @@ function draw(ev) {
     const offsetY = ev.offsetY
     // const { offsetX, offsetY } = ev
     switch (gCurrShape) {
-        case 'square':
-            drawSquare(offsetX, offsetY)
-            break;
-        case 'rect':
-            drawRect(offsetX, offsetY)
-            break;
-        case 'triangle':
-            drawTriangle(offsetX, offsetY)
-            break;
-        case 'circle':
-            drawCircle(offsetX, offsetY)
-            break;
         case 'line':
             drawLine(offsetX, offsetY)
             break;
