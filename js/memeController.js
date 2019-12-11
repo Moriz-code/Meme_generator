@@ -1,9 +1,22 @@
-let gCanvas
-let gCtx, gImg, gCurrentImgObj, gCurrentShape
+let gCanvas, gCtx, gImg
 
+let gCurrentStyle = {
+    tool: 'text',
+    fillColor: 'black',
+    strokeColor: 'black',
+    strokeWidth: 1,
+    font: '120px Impact',
+    align: 'left',
+}
+
+let gCurrentPos = {
+    x: 0,
+    y: 0
+}
 
 function init() {
     renderPicsToGallry();
+    initCanvas();
 }
 
 function renderPicsToGallry() {
@@ -15,40 +28,59 @@ function renderPicsToGallry() {
 }
 
 function onImgClick(imgID) {
-    initCanvas(imgID);
+    updateMemeImgId(imgID);
+    renderCanvas();
 }
 
-function initCanvas(imgID) {
+function initCanvas(){
     gCanvas = document.querySelector('.main-canvas');
     gCtx = gCanvas.getContext('2d');
-
-    gCurrentImgObj = getImgByID(imgID);
-    //  resizeCanvas(currentImg);
-    drawImg();
 }
 
-function drawImg() {
+function renderCanvas() {
+    meme = getMemeToRender();
+    drawImg(meme.selectedImgId);
+    drawText(meme.txts);
+}
+
+function applyCurrentStyle() {
+    gCtx.fillStyle = gCurrentStyle.fillColor;
+    gCtx.strokeWidth = gCurrentStyle.strokeWidth;
+    gCtx.strokeColor = gCurrentStyle.strokeColor;
+    gCtx.fontFamily = gCurrentStyle.fontFamily;
+    gCtx.font = gCurrentStyle.font;
+}
+
+function drawImg(imgID) {
     gImg = new Image();
     gImg.onload = () => {
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
     }
-    gImg.src = gCurrentImgObj.url
+    gImg.src = getImgByID(imgID).url
+ 
 }
 
 function resizeCanvas(img) {
     //TODO: change the canvas size according to the picture size and screen size. 
 }
 
+function onSetTool(tool) {
+    gCurrentStyle[tool] = tool;
+}
 
-function draw(ev) {
-    gCtx.save()
-    const offsetX = ev.offsetX
-    const offsetY = ev.offsetY
-    // const { offsetX, offsetY } = ev
-    switch (gCurrShape) {
-        case 'line':
-            drawLine(offsetX, offsetY)
-            break;
+function onTextChange(ev) {
+    updateMemeTxt(ev.target.id, ev.target.value, gCurrentStyle)
+    meme = getMemeToRender();
+    drawText(meme.txts)
+    // renderCanvas(); 
+}
+
+
+function drawText(txts) {
+    for (var i = 0; i < txts.length; i++) {
+        // console.log('drawText')
+        // document.querySelector('.line' + i).innerText = txts[i].line
+        gCtx.fillText(txts[i].line, 100, 100);
+        gCtx.strokeText(txts[i].line, 100, 100);
     }
-    gCtx.restore()
 }
