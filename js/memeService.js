@@ -85,7 +85,13 @@ function createNewLine(line = 'new line' , size, align, strokeColor, fillColor ,
 }
 
 function getLineByTxtIdx(TxtIdx){
-    return gMeme.txts[TxtIdx].line
+    console.log('TxtIdx' , TxtIdx)
+    return gMeme.txts[TxtIdx].line;    
+}
+
+function deleteLine(TxtIdx){
+    gMeme.selectedTxtIdx = TxtIdx;
+    return gMeme.txts.splice(TxtIdx,1);
 }
    
 

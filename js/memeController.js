@@ -28,15 +28,16 @@ function initCanvas() {
     gCanvas = document.querySelector('.main-canvas');
     gCtx = gCanvas.getContext('2d');
     gCurrTxtIdx = 0;
-    createNewLine('top-line', 40,  'center', 'pink' , 'black' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)});
-    createNewLine('bottom-line', 40,  'center', 'purple' , 'white', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
+    createNewLine('topLine', 40,  'center', 'pink' , 'black' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)});
+    createNewLine('bottomLine', 40,  'center', 'purple' , 'white', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
+    document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
 }
 
 function renderCanvas() {
     meme = getMemeToRender();
     drawImg(meme.selectedImgId);
     drawText(meme.txts);
-    document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
+    gTxtCounter = meme.txts.length - 1;
 }
 
 function drawImg(imgID) {
@@ -58,11 +59,11 @@ function onTextChange(ev) {
 function onCreateNewLine(){
     createNewLine( 'new line', 30, 'center' , 'black' ,'white',  {x:250, y:250});
     gCurrTxtIdx = gTxtCounter + 1;
+    document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
     renderCanvas();
 }
 
 function drawText(txts) {  
-    gTxtCounter = txts.length - 1;
     for (var i = 0; i < txts.length; i++) {
         gCtx.fillStyle = txts[i].fillColor;
         gCtx.strokeStyle = txts[i].strokeColor;
@@ -79,6 +80,7 @@ function switchline(){
     else{
         gCurrTxtIdx += 1
     }
+    document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
     renderCanvas();
 }
 
@@ -89,9 +91,9 @@ function onStyleChange(property, val) {
         case 'pos':
             updatePos(gCurrTxtIdx , val);         
         case 'strokeColor':
-            updateColor('strokeColor', gCurrTxtIdx, val.value)
+            updateColor('strokeColor', gCurrTxtIdx, val.value);
         case 'fillColor':
-        updateColor('fillColor', gCurrTxtIdx, val.value)
+        updateColor('fillColor', gCurrTxtIdx, val.value);
         renderCanvas();  
     }  
     }
@@ -101,4 +103,12 @@ function onStyleChange(property, val) {
     //     elLink.href = data
     //     elLink.download = 'my-img.png'
     // }
+
+
+    function onDelete(){
+        if (gTxtCounter === -1) return
+        deleteLine(gCurrTxtIdx);
+        gCurrTxtIdx = gTxtCounter - 1;
+        renderCanvas();
+    }
    
