@@ -10,8 +10,8 @@ let gCurrentStyle = {
 }
 
 let gCurrentPos = {
-    x: 0,
-    y: 0
+    x: 50,
+    y: 50
 }
 
 function init() {
@@ -80,4 +80,10 @@ function drawText(txts) {
         gCtx.fillText(txts[i].line, 100, 100);
         gCtx.strokeText(txts[i].line, 100, 100);
     }
+}
+
+function onTextStyleChange(property){
+    // gCurrentStyle.property = 
+    
+
 }

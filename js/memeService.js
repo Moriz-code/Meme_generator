@@ -1,4 +1,5 @@
 'use strict'
+
 let gKeywords = {
     'funny': 1,
     'love': 1
@@ -32,7 +33,16 @@ let gMeme = {
         size: 20,
         align: 'left',
         color: 'red'
-    }]
+    },
+
+    {
+        line:'line2',
+        size: 20,
+        align: 'left',
+        color: 'red'
+    }
+
+]
 }
 
 
