@@ -23,24 +23,25 @@
 <div class="canvas-container" hidden>
         <h3>Edit it much as you want</h3>
         <div class="tool-box" >
-                <input class="line0" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
-                <input type="image" onclick="onCreateNewLine()" src="./imgs/icons/add.png">
+                <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
+                <input type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
+                <!-- <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png"> -->
+                <!-- <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/center-text-alignment.png">
                 <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png">
-                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/center-text-alignment.png">
-                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png">
-                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-right.png">
+                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-right.png"> -->
                 <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
                 <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
-                Outline <input type="color"  onclick="onStyleChange()" value="#E8D5C7">
-                <!-- <label for="outline">Head</label> -->     
-                Fill <input type="color" id="fillcolor" name="head" value='#B0A3A1' onchange="onChangeFillcolor()">
+                Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
+                Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">
                 <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
-
                 <button onclick="onStyleChange('pos' , +10)">DOWN</button>
                 <button onclick="onStyleChange('pos' , -10)">UP </button>
+                <button onclick="onDelete()">DELETE</button>
+                <!-- <button onclick="onDelete()"><img src="./imgs/icons/trash.png"> </button> -->
+                
 
         </div>
-  <canvas class="main-canvas" width="300" height="300"></canvas>
+        <canvas class="main-canvas" width="500" height="500"></canvas>
 
 
   <a href="#" onclick="downloadCanvas(this)" download="">Download</a>

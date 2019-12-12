@@ -66,16 +66,26 @@ function updatePos(TxtIdx,val){
     gMeme.txts[TxtIdx].pos.y += val; 
 }
 
+function updateColor(property,TxtIdx, val){
+    gMeme.selectedTxtIdx = TxtIdx;
+    gMeme.txts[TxtIdx][property] = val;  
+}
 
-function createNewLine(pos, size, align, color){
+
+function createNewLine(line = 'new line' , size, align, strokeColor, fillColor , pos){
     gMeme.txts.push({
-        line:'',
+        line,
         size,
         align,
-        color,      
+        strokeColor,
+        fillColor,
         pos
     } 
     ) 
+}
+
+function getLineByTxtIdx(TxtIdx){
+    return gMeme.txts[TxtIdx].line
 }
    
 

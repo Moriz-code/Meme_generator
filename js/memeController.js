@@ -1,18 +1,8 @@
 let gCanvas, gCtx, gImg, gCurrTxtIdx, gTxtCounter; 
 
-let gStyle = {
-    tool: 'text',
-    fillColor: 'pink',
-    strokeColor: 'black',
-    strokeWidth: 1,
-    fontSize: 40,
-    fontFamily: 'Impact',
-    align: 'left',
-}
-
 let gCurrentPos = {
-    x: 0,
-    y: 0
+    x: 250,
+    y: 250
 }
 
 function init() {
@@ -38,15 +28,15 @@ function initCanvas() {
     gCanvas = document.querySelector('.main-canvas');
     gCtx = gCanvas.getContext('2d');
     gCurrTxtIdx = 0;
-    createNewLine({x: (gCanvas.width / 6), y: (gCanvas.height / 5)}, 40 , 'center', 'pink');
-    createNewLine({x: (gCanvas.width / 6), y: (gCanvas.height - 30)}, 80 , 'center', 'black');
-    renderCanvas();
+    createNewLine('top-line', 40,  'center', 'pink' , 'black' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)});
+    createNewLine('bottom-line', 40,  'center', 'purple' , 'white', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
 }
 
 function renderCanvas() {
     meme = getMemeToRender();
     drawImg(meme.selectedImgId);
     drawText(meme.txts);
+    document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
 }
 
 function drawImg(imgID) {
@@ -66,21 +56,20 @@ function onTextChange(ev) {
 }
 
 function onCreateNewLine(){
-    createNewLine(gCurrentPos);
+    createNewLine( 'new line', 30, 'center' , 'black' ,'white',  {x:250, y:250});
+    gCurrTxtIdx = gTxtCounter + 1;
     renderCanvas();
 }
 
-
 function drawText(txts) {  
     gTxtCounter = txts.length - 1;
-    // gCtx.save();
     for (var i = 0; i < txts.length; i++) {
-        gCtx.fillStyle = txts[i].color;
+        gCtx.fillStyle = txts[i].fillColor;
+        gCtx.strokeStyle = txts[i].strokeColor;
         gCtx.font = txts[i].size + 'px Impact';
         gCtx.fillText(txts[i].line, txts[i].pos.x, txts[i].pos.y);
-        gCtx.strokeText(txts[i].line, txts[i].pos.x, txts[i].pos.y);
+        gCtx.strokeText(txts[i].line, txts[i].pos.x, txts[i].pos.y);     
     }
-    //  gCtx.restore()
 }
 
 function switchline(){
@@ -90,25 +79,26 @@ function switchline(){
     else{
         gCurrTxtIdx += 1
     }
+    renderCanvas();
 }
 
 function onStyleChange(property, val) {
     switch (property) {
         case 'fontsize':
-             updateLineSize(gCurrTxtIdx , val);
-             renderCanvas();         
-             break;
-             
+             updateLineSize(gCurrTxtIdx , val);  
         case 'pos':
-            updatePos(gCurrTxtIdx , val);
-            renderCanvas(); 
-            break;
-            }  
+            updatePos(gCurrTxtIdx , val);         
+        case 'strokeColor':
+            updateColor('strokeColor', gCurrTxtIdx, val.value)
+        case 'fillColor':
+        updateColor('fillColor', gCurrTxtIdx, val.value)
+        renderCanvas();  
+    }  
     }
 
-    function downloadCanvas(elLink) {
-        const data = gCanvas.toDataURL();
-        elLink.href = data
-        elLink.download = 'my-img.png'
-    }
+    // function downloadCanvas(elLink) {
+    //     const data = gCanvas.toDataURL();
+    //     elLink.href = data
+    //     elLink.download = 'my-img.png'
+    // }
    
