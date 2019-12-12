@@ -23,7 +23,9 @@ header, h3{
     background-color: transparent;
 }
 
-.tool-box>button>img{
+
+/* tool box buttons */
+.tool-box input[type="image"]{
     width: 25px;
     height: 25px;
 }

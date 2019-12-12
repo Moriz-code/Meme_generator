@@ -1,23 +1,23 @@
-let gCanvas, gCtx, gImg
+let gCanvas, gCtx, gImg, gCurrTxtIdx, gTxtCounter; 
 
-let gCurrentStyle = {
+let gStyle = {
     tool: 'text',
     fillColor: 'pink',
     strokeColor: 'black',
     strokeWidth: 1,
-    font: '50px Impact',
+    fontSize: 40,
+    fontFamily: 'Impact',
     align: 'left',
 }
 
 let gCurrentPos = {
-    x: 50,
-    y: 50
+    x: 70,
+    y: 70
 }
 
 function init() {
     renderPicsToGallry();
     initCanvas();
-    applyCurrentStyle();
 }
 
 function renderPicsToGallry() {
@@ -34,9 +34,13 @@ function onImgClick(imgID) {
     renderCanvas();
 }
 
-function initCanvas(){
+function initCanvas() {
     gCanvas = document.querySelector('.main-canvas');
     gCtx = gCanvas.getContext('2d');
+    gCurrTxtIdx = 0;
+    createNewLine({x: (gCanvas.width / 6), y: (gCanvas.height / 5)}, 40 , 'center', 'pink');
+    createNewLine({x: (gCanvas.width / 6), y: (gCanvas.height - 30)}, 80 , 'center', 'black');
+    renderCanvas();
 }
 
 function renderCanvas() {
@@ -45,45 +49,56 @@ function renderCanvas() {
     drawText(meme.txts);
 }
 
-function applyCurrentStyle() {
-    gCtx.fillStyle = gCurrentStyle.fillColor;
-    gCtx.strokeWidth = gCurrentStyle.strokeWidth;
-    gCtx.strokeColor = gCurrentStyle.strokeColor;
-    gCtx.fontFamily = gCurrentStyle.fontFamily;
-    gCtx.font = gCurrentStyle.font;
-}
-
 function drawImg(imgID) {
     gImg = new Image();
-    gImg.src = getImgByID(imgID).url
-    gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height) 
+    gImg.src = getImgByID(imgID).url;
+    gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
 function resizeCanvas(img) {
     //TODO: change the canvas size according to the picture size and screen size. 
 }
 
-function onSetTool(tool) {
-    gCurrentStyle[tool] = tool;
-}
 
 function onTextChange(ev) {
-    updateMemeTxt(ev.target.id, ev.target.value, gCurrentStyle)
+    updateMemeTxt(gCurrTxtIdx, ev.target.value)
     renderCanvas();
-    // meme = getMemeToRender();
-    // drawText(meme.txts)
+}
+
+function onCreateNewLine(){
+    createNewLine(gCurrentPos);
+    renderCanvas();
 }
 
 
-function drawText(txts) {
+function drawText(txts) {  
+    gTxtCounter = txts.length - 1;
+    // gCtx.save();
     for (var i = 0; i < txts.length; i++) {
-        gCtx.fillText(txts[i].line, 100, 100);
-        gCtx.strokeText(txts[i].line, 100, 100);
+        gCtx.fillStyle = txts[i].color;
+        gCtx.font = txts[i].size + 'px Impact';
+        gCtx.fillText(txts[i].line, txts[i].pos.x, txts[i].pos.y);
+        gCtx.strokeText(txts[i].line, txts[i].pos.x, txts[i].pos.y);
+    }
+    //  gCtx.restore()
+}
+
+function switchline(){
+    if (gCurrTxtIdx >= gTxtCounter){
+        gCurrTxtIdx = 0;
+    }
+    else{
+        gCurrTxtIdx += 1
     }
 }
 
-function onTextStyleChange(property){
-    // gCurrentStyle.property = 
-    
+function onStyleChange(property, val) {
+    switch (property) {
+        case 'fontsize':
+             updateLineSize(gCurrTxtIdx , val);
+             renderCanvas(); 
+            }                 
+    }
+   
 
-}
+

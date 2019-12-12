@@ -24,14 +24,18 @@
         <h3>Edit it much as you want</h3>
         <div class="tool-box" >
                 <input class="line0" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
-                <button class=""><img src="./imgs/icons/add.png"></button>
-                <button class=""><img src="./imgs/icons/align-to-left.png"></button>
-                <button class=""><img src="./imgs/icons/center-text-alignment.png"></button>
-                <button class=""><img src="./imgs/icons/align-to-right.png"></button>
-                <button class=""><img src="./imgs/icons/decrease font - icon.png"></button>
-                <button class="" onclick="onTextStyleChange('font')"><img src="./imgs/icons/increase font - icon.png"></button>
-                <button class=""><img src="./imgs/icons/text stroke.png"></button>
-                <button class=""><img src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <input type="image" onclick="onCreateNewLine()" src="./imgs/icons/add.png">
+                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png">
+                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/center-text-alignment.png">
+                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png">
+                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-right.png">
+                <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
+                <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
+                Outline <input type="color"  onclick="onStyleChange()" value="#E8D5C7">
+                <!-- <label for="outline">Head</label> -->     
+                Fill <input type="color" id="fillcolor" name="head" value='#B0A3A1' onchange="onChangeFillcolor()">
+                <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
+
         </div>
   <canvas class="main-canvas" width="300" height="300"></canvas>
 </div>

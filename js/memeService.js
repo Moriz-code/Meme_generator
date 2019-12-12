@@ -26,23 +26,9 @@ let gImgs = [{id: 0,url: 'imgs/000.jpg', keywords: ['funny']},
 ]
 
 let gMeme = {
-    selectedImgId: gImg,
+    selectedImgId: 0,
     selectedTxtIdx: 0,
-    txts: [{
-        line:'',
-        size: 20,
-        align: 'left',
-        color: 'red'
-    },
-
-    {
-        line:'line2',
-        size: 20,
-        align: 'left',
-        color: 'red'
-    }
-
-]
+    txts: []
 }
 
 
@@ -64,8 +50,28 @@ function updateMemeImgId(id){
     gMeme.selectedImgId = id
 }
 
-function updateMemeTxt(TxtIdx, txt, gCurrentStyle){
+function updateMemeTxt(TxtIdx, txt){
     gMeme.selectedTxtIdx = TxtIdx;
     gMeme.txts[TxtIdx].line = txt
 }
+
+function updateLineSize(TxtIdx,val){
+     if (gMeme.txts[TxtIdx].size + val < 20) return;
+    gMeme.selectedTxtIdx = TxtIdx;
+    gMeme.txts[TxtIdx].size += val;
+    
+}
+
+
+function createNewLine(pos, size, align, color){
+    gMeme.txts.push({
+        line:'',
+        size,
+        align,
+        color,      
+        pos
+    } 
+    ) 
+}
+   
 
