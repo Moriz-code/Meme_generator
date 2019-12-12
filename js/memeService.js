@@ -1,10 +1,5 @@
 'use strict'
 
-let gKeywords = {
-    'funny': 1,
-    'love': 1
-}
-
 let gImgs = [{id: 0,url: 'imgs/000.jpg', keywords: ['funny']},
     {id: 1, url: 'imgs/001.jpg', keywords: ['love']},
     {id: 2, url: 'imgs/002.jpg', keywords: ['love']},
@@ -85,7 +80,6 @@ function createNewLine(line = 'new line' , size, align, strokeColor, fillColor ,
 }
 
 function getLineByTxtIdx(TxtIdx){
-    console.log('TxtIdx' , TxtIdx)
     return gMeme.txts[TxtIdx].line;    
 }
 

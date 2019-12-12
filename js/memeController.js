@@ -97,18 +97,21 @@ function onStyleChange(property, val) {
         renderCanvas();  
     }  
     }
-
-    // function downloadCanvas(elLink) {
-    //     const data = gCanvas.toDataURL();
-    //     elLink.href = data
-    //     elLink.download = 'my-img.png'
-    // }
-
-
+ 
     function onDelete(){
         if (gTxtCounter === -1) return
         deleteLine(gCurrTxtIdx);
         gCurrTxtIdx = gTxtCounter - 1;
         renderCanvas();
     }
+
+
+    function download() {
+        var download = document.getElementById("download");
+        var image = document.getElementById("canvas").toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+        download.setAttribute("href", image);
+        }
+
+ 
    

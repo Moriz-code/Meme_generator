@@ -15,8 +15,18 @@
     <!-- gallery -->
 
 <header>
+  <nav>
+    <ul>
+        <li><a class="active" href="#home">gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#news">About</a></li>
+      </ul>
+
+    </nav>
+
     <h1>MEME</h1>
     <h2>MEME made by ME</h2>
+ 
     
     
 </header>
@@ -25,6 +35,7 @@
         <div class="tool-box" >
                 <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
                 <input type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
+                <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
                 <!-- <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png"> -->
                 <!-- <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/center-text-alignment.png">
                 <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png">
@@ -33,25 +44,25 @@
                 <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
                 Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
                 Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">
-                <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
+               
                 <!-- <button onclick="onStyleChange('pos' , +10)">led</button>
                 <button onclick="onStyleChange('pos' , -10)">UP </button> -->
                 <button onclick="onStyleChange('pos' , +10)">DOWN</button>
                 <button onclick="onStyleChange('pos' , -10)">UP </button>
-                <button onclick="onDelete()">DELETE</button>
-            
-                
+                <button onclick="onDelete()">DELETE</button>  
 
         </div>
-        <canvas class="main-canvas" width="500" height="500"></canvas>
+    <canvas id="canvas" class="main-canvas" width="500" height="500"></canvas>
 
-
-  <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+    <a id="download" download="canvas.png">
+      <button type="button" onClick="download()">Download</button>
+    </a>
+  
 </div>
 
     <div>
-            <h3>Pick up a picture</h3>
-        <ul class="gallery-container"></ul></div>
+    <h3>Pick up a picture</h3>
+   <ul class="gallery-container"></ul></div>
     <!-- canvas -->
 
     <script src="./js/storageService.js"></script>

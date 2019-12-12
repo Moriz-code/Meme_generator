@@ -1,33 +1,92 @@
-.li-gallery-image img {
-    width:150px;
-    height:150px;
-}
+.gallery-container{
+    background-color: rgba(240, 122, 98,0.2);
+    padding:5px;
+    border:none;
+    border-radius:5px;
+  }
+  
+  .li-gallery-image img {
+      width:150px;
+      height:150px;
+  }
+  
+  .gallery-container li{
+  list-style: none;
+  cursor: pointer;
+  display: inline;
+  padding: 5px;
+  }
+  
 
-.gallery-container li{
-list-style: none;
-display: inline;
-padding: 5px;
-}
+  
+  header{
+      font-family: 'Roboto', sans-serif;
+      background-color: #3BBFA5;
+      border-radius: 5px;
+      color: white;
+      text-align: center;
+  }
+  /* 
+  navbar */
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f3f3f3;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: #666;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+      background-color: #ddd;
+    }
+    
+    li a.active {
+      color: white;
+      background-color: #3BBFA5;
+    }
+  
+  h3{
+      font-family: 'Roboto', sans-serif;
+      color:gray;
+      text-align: center;
+  }
+  
+  .canvas-container{
+      border-radius: 5px;
+      text-align: center;
+  }
 
-
-header, h3{
-    font-family: 'Roboto', sans-serif;
-}
-
-.canvas-container{
-    text-align: center;
-    background-color: antiquewhite;
-}
-
-.tool-box>button{
+  .tool-box{
+    margin-bottom: 20px;
+  }
+  
+  .tool-box>button{
+    padding:5px;
     background-color: transparent;
-}
-
-
-/* tool box buttons */
-.tool-box input[type="image"]{
-    width: 25px;
-    height: 25px;
-}
-
-
+  }
+  
+  
+  /* tool box buttons */
+  .tool-box input[type="image"]{
+      width: 25px;
+      height: 25px;
+  }
+  
+  #download{
+      background-color: #F07A62;
+  }
+  
+  
+  
