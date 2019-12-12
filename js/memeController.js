@@ -46,11 +46,6 @@ function drawImg(imgID) {
     gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-function resizeCanvas(img) {
-    //TODO: change the canvas size according to the picture size and screen size. 
-}
-
-
 function onTextChange(ev) {
     updateMemeTxt(gCurrTxtIdx, ev.target.value)
     renderCanvas();

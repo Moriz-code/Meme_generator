@@ -36,16 +36,10 @@
                 <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
                 <input type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
                 <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
-                <!-- <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png"> -->
-                <!-- <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/center-text-alignment.png">
-                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-left.png">
-                <input type="image" onclick="onStyleChange(this)" src="./imgs/icons/align-to-right.png"> -->
                 <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
                 <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
                 Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
                 Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">       
-                <!-- <button onclick="onStyleChange('pos' , +10)">led</button>
-                <button onclick="onStyleChange('pos' , -10)">UP </button> -->
                 <button onclick="onStyleChange('pos' , +10)">DOWN</button>
                 <button onclick="onStyleChange('pos' , -10)">UP </button>
                 <button onclick="onDelete()">DELETE</button> 
@@ -56,9 +50,6 @@
         </div>
     <canvas id="canvas" class="main-canvas" width="500" height="500"></canvas>
 
-
-   
-  
 </div>
 
     <div>
