@@ -84,9 +84,15 @@
       height: 25px;
   }
   
-  #download{
+.downloadBtn{
+    height:50px;
+      width: 100px;
+      color: white;
+      font-size:15px;
       background-color: #F07A62;
   }
+
+  
   
   
   

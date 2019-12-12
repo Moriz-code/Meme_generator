@@ -29,7 +29,7 @@ function initCanvas() {
     gCtx = gCanvas.getContext('2d');
     gCurrTxtIdx = 0;
     createNewLine('topLine', 40,  'center', 'pink' , 'black' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)});
-    createNewLine('bottomLine', 40,  'center', 'purple' , 'white', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
+    createNewLine('bottomLine', 40,  'center', 'black' , 'pink', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
     document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
 }
 

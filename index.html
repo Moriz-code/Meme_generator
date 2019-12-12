@@ -43,20 +43,21 @@
                 <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
                 <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
                 Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
-                Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">
-               
+                Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">       
                 <!-- <button onclick="onStyleChange('pos' , +10)">led</button>
                 <button onclick="onStyleChange('pos' , -10)">UP </button> -->
                 <button onclick="onStyleChange('pos' , +10)">DOWN</button>
                 <button onclick="onStyleChange('pos' , -10)">UP </button>
-                <button onclick="onDelete()">DELETE</button>  
+                <button onclick="onDelete()">DELETE</button> 
+                <a id="download" download="canvas.png">
+                    <button class="downloadBtn" type="button" onClick="download()">Download</button>
+                  </a> 
 
         </div>
     <canvas id="canvas" class="main-canvas" width="500" height="500"></canvas>
 
-    <a id="download" download="canvas.png">
-      <button type="button" onClick="download()">Download</button>
-    </a>
+
+   
   
 </div>
 

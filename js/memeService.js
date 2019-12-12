@@ -45,6 +45,8 @@ function updateMemeImgId(id){
     gMeme.selectedImgId = id
 }
 
+
+//TODO:merge it to one function
 function updateMemeTxt(TxtIdx, txt){
     gMeme.selectedTxtIdx = TxtIdx;
     gMeme.txts[TxtIdx].line = txt
