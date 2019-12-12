@@ -58,8 +58,12 @@ function updateMemeTxt(TxtIdx, txt){
 function updateLineSize(TxtIdx,val){
      if (gMeme.txts[TxtIdx].size + val < 20) return;
     gMeme.selectedTxtIdx = TxtIdx;
-    gMeme.txts[TxtIdx].size += val;
-    
+    gMeme.txts[TxtIdx].size += val;  
+}
+
+function updatePos(TxtIdx,val){
+    gMeme.selectedTxtIdx = TxtIdx;
+    gMeme.txts[TxtIdx].pos.y += val; 
 }
 
 

@@ -36,8 +36,14 @@
                 Fill <input type="color" id="fillcolor" name="head" value='#B0A3A1' onchange="onChangeFillcolor()">
                 <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
 
+                <button onclick="onStyleChange('pos' , +10)">DOWN</button>
+                <button onclick="onStyleChange('pos' , -10)">UP </button>
+
         </div>
   <canvas class="main-canvas" width="300" height="300"></canvas>
+
+
+  <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
 </div>
 
     <div>

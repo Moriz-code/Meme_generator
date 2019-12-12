@@ -11,8 +11,8 @@ let gStyle = {
 }
 
 let gCurrentPos = {
-    x: 70,
-    y: 70
+    x: 0,
+    y: 0
 }
 
 function init() {
@@ -96,9 +96,19 @@ function onStyleChange(property, val) {
     switch (property) {
         case 'fontsize':
              updateLineSize(gCurrTxtIdx , val);
-             renderCanvas(); 
-            }                 
+             renderCanvas();         
+             break;
+             
+        case 'pos':
+            updatePos(gCurrTxtIdx , val);
+            renderCanvas(); 
+            break;
+            }  
+    }
+
+    function downloadCanvas(elLink) {
+        const data = gCanvas.toDataURL();
+        elLink.href = data
+        elLink.download = 'my-img.png'
     }
    
-
-
