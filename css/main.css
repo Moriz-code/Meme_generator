@@ -1,10 +1,4 @@
-.gallery-container{
-    background-color: rgba(240, 122, 98,0.2);
-    padding:5px;
-    border:none;
-    border-radius:5px;
-  }
-  
+
   .li-gallery-image img {
       width:150px;
       height:150px;
@@ -18,45 +12,6 @@
   }
   
 
-  
-  header{
-      font-family: 'Roboto', sans-serif;
-      background-color: #3BBFA5;
-      border-radius: 5px;
-      color: white;
-      text-align: center;
-  }
-  /* 
-  navbar */
-  ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #f3f3f3;
-    }
-    
-    li {
-      float: left;
-    }
-    
-    li a {
-      display: block;
-      color: #666;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-    
-    li a:hover:not(.active) {
-      background-color: #ddd;
-    }
-    
-    li a.active {
-      color: white;
-      background-color: #3BBFA5;
-    }
-  
   h3{
       font-family: 'Roboto', sans-serif;
       color:gray;
@@ -87,11 +42,18 @@
 .downloadBtn{
     height:50px;
       width: 100px;
-      color: white;
-      font-size:15px;
-      background-color: #F07A62;
+  
   }
 
+  .highlight{
+  
+  }
+
+
+  
+
+
+ 
   
   
   

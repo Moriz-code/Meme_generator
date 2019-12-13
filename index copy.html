@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/myStyle.css">
+    <link rel="stylesheet" href="css/helpers.css">
+    <title>MEME</title>
+</head>
+
+<body onload="init()">
+    <header>
+        <nav class="navbar">
+            <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+                <i class="fa fa-bars"></i>
+            </label>
+            <a href="#" class="logo">MEME by ME</a>
+            <input type="checkbox" id="chkToggle"></input>
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="#" class="nav-links">Gallery</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-links">MEMES</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-links">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="canvas-container main-container" hidden>
+      
+        <div class="tool-box" hidden>
+            <h3>Edit it much as you want</h3>
+            <label>Image File:</label><br/>
+            <input type="file" id="imageLoader" name="imageLoader" onclick="onImgUpload()"/>
+
+                <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
+                <input type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
+                <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
+                <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
+                <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
+
+                Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
+                Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">  
+
+                <button onclick="onStyleChange('pos' , +10)">DOWN</button>
+                <button onclick="onStyleChange('pos' , -10)">UP</button>
+
+                <button onclick="onDelete()">DELETE</button> 
+
+                
+                <button onclick="onSaving()">Save</button>
+                
+                
+                <a id="download" download="canvas.png">
+                    <button class="downloadBtn" type="button" onClick="onDownload()">Download</button>
+                </a> 
+
+        </div>
+       
+    <canvas id="canvas" class="main-canvas">
+    </canvas>
+    </div>
+
+    <canvas id="canvas" class="main-canvas"></canvas>
+   
+    <div class="display-grid main-container">
+        <ul class="gallery-container"></ul>
+    </div>
+
+    <div class="main-container">
+        <ul class="user-gallery-container"></ul>
+    </div>
+
+
+    </div>
+    <script src="./js/storageService.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/memeService.js"></script>
+    <script src="./js/memeController.js"></script>
+    <script src="./js/userGalleryController.js"></script>
+</body>
+
+
+</html>

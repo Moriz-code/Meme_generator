@@ -1,65 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Meme Generator</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/myStyle.css">
+    <link rel="stylesheet" href="css/helpers.css">
+    <link rel="stylesheet" href="css/mediaQueries.css">
+   
+    <title>MEME</title>
+</head>
 
-    <link rel="stylesheet" href="./css/main.css" class="css" />
-    <link rel="stylesheet" href="./css/mediaQueries.css" class="css" />
-  </head>
-  <body onload="init()">
-    <!-- gallery -->
-
-<header>
-  <nav>
-    <ul>
-        <li><a class="active" href="#home">gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#news">About</a></li>
-      </ul>
-
-    </nav>
-
-    <h1>MEME</h1>
-    <h2>MEME made by ME</h2>
- 
+<body onload="init()">
+    <header>
+        <nav class="navbar container">
+            <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+                <i class="fa fa-bars"></i>
+            </label>
+            <a href="#" class="logo">MEME by ME</a>
+            <input type="checkbox" id="chkToggle"></input>
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="index.html#gallery" class="nav-links">Gallery</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-links">MEMES</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-links">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     
-    
-</header>
-<div class="canvas-container" hidden>
-        <h3>Edit it much as you want</h3>
-        <div class="tool-box" >
-                <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
-                <input type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
-                <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
-                <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
-                <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
-                Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
-                Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">       
-                <button onclick="onStyleChange('pos' , +10)">DOWN</button>
-                <button onclick="onStyleChange('pos' , -10)">UP </button>
-                <button onclick="onDelete()">DELETE</button> 
-                <a id="download" download="canvas.png">
-                    <button class="downloadBtn" type="button" onClick="download()">Download</button>
-                  </a> 
+    <h1></h1>
 
-        </div>
-    <canvas id="canvas" class="main-canvas" width="500" height="500"></canvas>
+
+    <div class="canvas-container container" hidden>
+        
+    <canvas id="canvas" class="main-canvas"></canvas>
+
+    <div class="tool-box">
+            <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
+            <input type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
+            <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
+            <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
+            <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
+            Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
+            Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">
+            <input type="image" onclick="onStyleChange('pos' , -10)" src="./imgs/icons/top.png">  
+            <input type="image" onclick="onStyleChange('pos' , +10)" src="./imgs/icons/bottom.png">
+            <input type="image" onclick="onDelete()" src="./imgs/icons/trash.png">
+            
+           
+            
+            <button onclick="onSaving()">Save</button>
+            <a id="download" download="canvas.png">
+                <button class="downloadBtn" type="button" onClick="onDownload()">Download</button>
+            </a> 
+            <button onclick="">Share</button>
+
+            
+
+    </div>
+
 
 </div>
 
-    <div>
-    <h3>Pick up a picture</h3>
-   <ul class="gallery-container"></ul></div>
-    <!-- canvas -->
+<div id="gallery" class="container gallert-options ">
+    <input class="searchInput" type="text" placeholder="Search..">
+    <ul class="popular-search">
+        <li>funny</li>
+        <li>stupid</li>
+        <li>tired</li>
+    </ul>
+    <input type="file" id="imageLoader" name="imageLoader" onclick="onImgUpload()"/>
+    </div>
+    
+    <div class="display-grid container">
+        <ul class="gallery-container"></ul>
+    </div>
 
+  
+    <div class="container">
+        <ul class="user-gallery-container"></ul>
+    </div>
+
+    </div>
     <script src="./js/storageService.js"></script>
     <script src="./js/utils.js"></script>
-    <script src="./js/memeController.js"></script>
     <script src="./js/memeService.js"></script>
-  </body>
+    <script src="./js/memeController.js"></script>
+    <script src="./js/userGalleryController.js"></script>
+</body>
+
+
 </html>
