@@ -12,10 +12,11 @@ function init() {
 }
 
 function resizeCanvas(){
-    gCanvas.width = window.innerWidth / 2;
+    gCanvas.width  = window.innerWidth / 2;
     gCanvas.height = window.innerHeight / 2;
+    // if (gCanvas.width > gCanvas.height) gCanvas.height = gCanvas.width
+    // else gCanvas.width = gCanvas.height
     if (gCanvas.width > gCanvas.height || gCanvas.height > gCanvas.width) gCanvas.width = gCanvas.height
-
 }
   
 function renderPicsToMainGallry(images = getImagesTorender()) {
@@ -36,7 +37,6 @@ function onImgClick(imgID) {
     updateMemeImgId(imgID);
     resizeCanvas();
     renderCanvas();
-
     document.querySelector('.canvas-container').classList.remove("display-none")
     document.querySelector('.gallert-options').classList.add("display-none")
 }
@@ -45,14 +45,12 @@ function initCanvas() {
     gCanvas = document.querySelector('.main-canvas');
     gCtx = gCanvas.getContext('2d');
     gCurrTxtIdx = 0;
-    createNewLine("topLine", 40,  'center', 'pink' , 'black' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)});
-    createNewLine("bottomLine", 40,  'center', 'black' , 'pink', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
+    createNewLine('topLine', 40,  'center', 'black' , 'white' , {x: (gCanvas.width / 4), y: (40)});
+    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 4), y: (450)});
     document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
 }
 
-
 function renderCanvas() {
-    debugger
     meme = getMemeToRender();
     drawImg(meme.selectedImgId);
     drawText(meme.txts);
@@ -149,21 +147,22 @@ function onStyleChange(property, val) {
                 img.width = img.width*scale;
                 img.height = img.height*scale;
                 //gCtx.drawImage(img,0,0);
-                gCtx.drawImage(img,0,0,img.width,img.height);
-            }
+                   
+            }    
+            gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
             img.src = event.target.result;
             saveToStorage('meme', img.src);
+            createUserMeme();
+            renderCanvas();
         }
        
         reader.readAsDataURL(ev.target.files[0]); 
-        createUserMeme();
-        renderCanvas();
+        
         document.querySelector('.canvas-container').classList.remove("display-none")
         document.querySelector('.gallert-options').classList.add("display-none")
-        // renderPicsToMainGallry();
-    
-    }
 
+        
+    }
 
     //save to gallery
     function onSaving(){
@@ -194,7 +193,6 @@ function onStyleChange(property, val) {
        
    }
 
-
    function onCanvasClick(ev){
      //  findTextLine(ev.offsetX , ev.offsetY)
        console.log(ev.offsetX , ev.offsetY)
@@ -202,7 +200,6 @@ function onStyleChange(property, val) {
 
 function onSearch(){
   const userInput = document.getElementById('searchInput').value.toLowerCase();
-  if (getMemeSearchResults(userInput) === 0) return
   renderPicsToMainGallry(getMemeSearchResults(userInput))
 }
    

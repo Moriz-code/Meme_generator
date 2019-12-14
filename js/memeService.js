@@ -81,7 +81,7 @@ function updateText(property, TxtIdx, val){
         gMeme.txts[TxtIdx][property].y += val;
     }
     else{
-        gMeme.txts[TxtIdx][property] = val.value;
+        gMeme.txts[TxtIdx][property] = val;
     }
 }
 
@@ -109,9 +109,8 @@ function deleteLine(TxtIdx){
 }
 
    function getMemeSearchResults(userInput){
-     let searchResults = gImgs.filter((img => img.keywords.includes(userInput)))
+     var searchResults = gImgs.filter((img => img.keywords.includes(userInput)))
       return searchResults
-    //  if (searchResults.length === 0) return gImgs.splice();     
 }
    
 
