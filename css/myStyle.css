@@ -20,16 +20,19 @@
 }
 
 
-body,html {
+body{
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+html {
   font-family:' Varela', 'Pt_sans', serif;
   background-color: whitesmoke;
-  margin: 0;
+  margin: 0; 
   padding: 0;
   width:  100%;
   height: 100%;
-  /* max-width: 100%;
-  min-height: 100vh; */
-  position:relative;
+  position:relative; */
 }
 
 
@@ -157,7 +160,7 @@ grid */
   width: 50px;
   height: 50px;
   padding: 5px;
-  border: 2px solid #fd7d8c;
+  border: 1px solid #fd7d8c;
   border-radius: 5px;
 }
 
@@ -202,9 +205,9 @@ grid */
 .edit-text {
   grid-column: 3 / 9;
   grid-row: 2 / span 4;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  /* display: grid; */
+  /* grid-template-columns: repeat(4, 1fr); */
+  /* grid-template-rows: repeat(4, 1fr); */
 }
 
 .toolbox-btns {

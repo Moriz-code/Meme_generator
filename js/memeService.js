@@ -58,8 +58,8 @@ function updateMemeObj() {
         selectedTxtIdx: 0,
         txts: []
     }
-    createNewLine('topLine', 40,  'center', 'black' , 'white' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)}); 
-    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
+    createNewLine('topLine', 40,  'center', 'black' , 'white' , {x: (gCanvas.width / 8), y: (gCanvas.height / 5)}); 
+    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 8), y: (gCanvas.height - 30)});
 }
 
 

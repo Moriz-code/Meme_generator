@@ -8,14 +8,13 @@ let gCurrentPos = {
 function init() {
     renderPicsToMainGallry();
     initCanvas();
-    window.addEventListener('resize' , resizeCanvas())
+    resizeCanvas();
+  //  window.addEventListener('resize' , function(){})
 }
 
 function resizeCanvas(){
     gCanvas.width  = window.innerWidth / 2;
     gCanvas.height = window.innerHeight / 2;
-    // if (gCanvas.width > gCanvas.height) gCanvas.height = gCanvas.width
-    // else gCanvas.width = gCanvas.height
     if (gCanvas.width > gCanvas.height || gCanvas.height > gCanvas.width) gCanvas.width = gCanvas.height
 }
   
@@ -45,8 +44,8 @@ function initCanvas() {
     gCanvas = document.querySelector('.main-canvas');
     gCtx = gCanvas.getContext('2d');
     gCurrTxtIdx = 0;
-    createNewLine('topLine', 40,  'center', 'black' , 'white' , {x: (gCanvas.width / 4), y: (40)});
-    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 4), y: (450)});
+    createNewLine('topLine', 40,  'center', 'black' , 'white' , {x: (gCanvas.width / 10), y: (40)});
+    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 10), y: (450)});
     document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
 }
 
@@ -139,24 +138,25 @@ function onStyleChange(property, val) {
     
     function handleImage(ev){
     var reader = new FileReader();
+    var img = new Image();
         reader.onload = function(event){
-            var img = new Image();
             img.onload = function(){
                 var scaleFactor = gCanvas.width / img.width
                 var scale = Math.min((scaleFactor/img.width),(scaleFactor/img.height));
                 img.width = img.width*scale;
                 img.height = img.height*scale;
                 //gCtx.drawImage(img,0,0);
+                gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
                    
             }    
-            gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+           
             img.src = event.target.result;
-            saveToStorage('meme', img.src);
-            createUserMeme();
-            renderCanvas();
+            saveToStorage('meme', img.src);       
         }
+        reader.readAsDataURL(ev.target.files[0]);
+        createUserMeme();
+        renderCanvas();
        
-        reader.readAsDataURL(ev.target.files[0]); 
         
         document.querySelector('.canvas-container').classList.remove("display-none")
         document.querySelector('.gallert-options').classList.add("display-none")
@@ -193,13 +193,18 @@ function onStyleChange(property, val) {
        
    }
 
-   function onCanvasClick(ev){
-     //  findTextLine(ev.offsetX , ev.offsetY)
-       console.log(ev.offsetX , ev.offsetY)
-   }
+//    function onCanvasClick(ev){
+//      //  findTextLine(ev.offsetX , ev.offsetY)
+//        console.log(ev.offsetX , ev.offsetY)
+//    }
 
 function onSearch(){
   const userInput = document.getElementById('searchInput').value.toLowerCase();
-  renderPicsToMainGallry(getMemeSearchResults(userInput))
+  if (userInput.length === 0)  {
+      renderPicsToMainGallry() 
+  }else{
+    renderPicsToMainGallry(getMemeSearchResults(userInput))
+  }
+  
 }
    
