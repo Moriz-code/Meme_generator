@@ -47,6 +47,21 @@
     .container{
       width:750px;
     }
+
+    .main-nav li {
+      text-align: center;
+      margin: 10px auto;
+        position: relative;
+        text-align: center;
+        margin: 2px auto;
+        background-color: #a5a5a5;
+        border-radius: 5px;
+      
+    }
+    
+    header{
+      height:65px;
+    }
   }
 
 
@@ -66,4 +81,7 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
   }
+
+  
+
   }

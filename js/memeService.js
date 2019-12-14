@@ -2,7 +2,7 @@
 let gImgId = 0;
 
 let gImgs = [{id: gImgId++,url: 'imgs/000.jpg', keywords: ['funny']},
-    {id:  gImgId++, url: 'imgs/001.jpg', keywords: ['love']},
+    {id:  gImgId++, url: 'imgs/001.jpg', keywords: ['dogs']},
     {id:  gImgId++, url: 'imgs/002.jpg', keywords: ['love']},
     {id:  gImgId++, url: 'imgs/003.jpg', keywords: ['love']},
     {id:  gImgId++, url: 'imgs/004.jpg', keywords: ['love']},
@@ -12,13 +12,13 @@ let gImgs = [{id: gImgId++,url: 'imgs/000.jpg', keywords: ['funny']},
     {id:  gImgId++, url: 'imgs/008.jpg', keywords: ['love']},
     {id:  gImgId++, url: 'imgs/009.jpg', keywords: ['love']},
     {id:  gImgId++, url: 'imgs/010.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/011.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/012.jpg', keywords: ['love']},
+    {id:  gImgId++, url: 'imgs/011.jpg', keywords: ['cats']},
+    {id:  gImgId++, url: 'imgs/012.jpg', keywords: ['cats']},
     {id:  gImgId++, url: 'imgs/013.jpg', keywords: ['love']},
     {id:  gImgId++, url: 'imgs/014.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/015.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/016.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/017.jpg', keywords: ['love']},
+    {id:  gImgId++, url: 'imgs/015.jpg', keywords: ['funny']},
+    {id:  gImgId++, url: 'imgs/016.jpg', keywords: ['funny']},
+    {id:  gImgId++, url: 'imgs/017.jpg', keywords: ['game']},
 ]
 
 let gMeme = {
@@ -47,7 +47,7 @@ function addUserImgToGallery(){
     let newImg = {
         id: gImgId++,
         url: loadFromStorage('meme' , ''), 
-        keywords: ['']
+        // keywords: ['']
     }
     gImgs.push(newImg);
 }
@@ -81,7 +81,7 @@ function updateText(property, TxtIdx, val){
         gMeme.txts[TxtIdx][property].y += val;
     }
     else{
-        gMeme.txts[TxtIdx][property] = val;
+        gMeme.txts[TxtIdx][property] = val.value;
     }
 }
 
@@ -108,6 +108,10 @@ function deleteLine(TxtIdx){
     return gMeme.txts.splice(TxtIdx,1);
 }
 
-
+   function getMemeSearchResults(userInput){
+     let searchResults = gImgs.filter((img => img.keywords.includes(userInput)))
+      return searchResults
+    //  if (searchResults.length === 0) return gImgs.splice();     
+}
    
 

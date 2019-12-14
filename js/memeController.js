@@ -8,14 +8,7 @@ let gCurrentPos = {
 function init() {
     renderPicsToMainGallry();
     initCanvas();
-
     window.addEventListener('resize' , resizeCanvas())
-
-    // window.addEventListener('resize', function () {
-    //     gCanvas.width = window.innerWidth / 2;
-    //     gCanvas.height = window.innerHeight / 2;
-    //     if (gCanvas.width > gCanvas.height || gCanvas.height > gCanvas.width) gCanvas.width = gCanvas.height
-    // })    
 }
 
 function resizeCanvas(){
@@ -25,8 +18,7 @@ function resizeCanvas(){
 
 }
   
-function renderPicsToMainGallry() {
-    let images = getImagesTorender();
+function renderPicsToMainGallry(images = getImagesTorender()) {
     images = images.map(function (image) {
         return `<li class="li-gallery-image pic${image.id}" onclick="onImgClick(${image.id})"><img src="${image.url}"></li>`
     })
@@ -41,23 +33,26 @@ function renderPicsUserGallery(){
 }
 
 function onImgClick(imgID) {
-    document.querySelector('.canvas-container').classList.remove("display-none");
     updateMemeImgId(imgID);
     resizeCanvas();
     renderCanvas();
+
+    document.querySelector('.canvas-container').classList.remove("display-none")
+    document.querySelector('.gallert-options').classList.add("display-none")
 }
 
 function initCanvas() {
     gCanvas = document.querySelector('.main-canvas');
     gCtx = gCanvas.getContext('2d');
     gCurrTxtIdx = 0;
-    createNewLine('topLine', 40,  'center', 'pink' , 'black' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)});
-    createNewLine('bottomLine', 40,  'center', 'black' , 'pink', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
+    createNewLine("topLine", 40,  'center', 'pink' , 'black' , {x: (gCanvas.width / 6), y: (gCanvas.height / 5)});
+    createNewLine("bottomLine", 40,  'center', 'black' , 'pink', {x: (gCanvas.width / 6), y: (gCanvas.height - 30)});
     document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
 }
 
 
 function renderCanvas() {
+    debugger
     meme = getMemeToRender();
     drawImg(meme.selectedImgId);
     drawText(meme.txts);
@@ -116,7 +111,7 @@ function switchline(){
 }
 
 function onStyleChange(property, val) {
-            updateText(property, gCurrTxtIdx , val); 
+            updateText(property, gCurrTxtIdx , val);      
             renderCanvas();          
     }  
     
@@ -141,6 +136,7 @@ function onStyleChange(property, val) {
     function onImgUpload(){
             var imageLoader = document.getElementById('imageLoader');
               imageLoader.addEventListener('change', handleImage, false);
+
         }
     
     function handleImage(ev){
@@ -148,17 +144,24 @@ function onStyleChange(property, val) {
         reader.onload = function(event){
             var img = new Image();
             img.onload = function(){
-                gCanvas.width = img.width;
-                gCanvas.height = img.height;
-                gCtx.drawImage(img,0,0);
+                var scaleFactor = gCanvas.width / img.width
+                var scale = Math.min((scaleFactor/img.width),(scaleFactor/img.height));
+                img.width = img.width*scale;
+                img.height = img.height*scale;
+                //gCtx.drawImage(img,0,0);
+                gCtx.drawImage(img,0,0,img.width,img.height);
             }
             img.src = event.target.result;
             saveToStorage('meme', img.src);
         }
+       
         reader.readAsDataURL(ev.target.files[0]); 
         createUserMeme();
         renderCanvas();
-        renderPicsToMainGallry();
+        document.querySelector('.canvas-container').classList.remove("display-none")
+        document.querySelector('.gallert-options').classList.add("display-none")
+        // renderPicsToMainGallry();
+    
     }
 
 
@@ -172,11 +175,8 @@ function onStyleChange(property, val) {
     }
 
 
-
-
     //navigation
    function onMenuClick(page){
-       debugger
        let mainGallery = document.querySelector('.gallert-options')
        let MEMES = document.querySelector('.user-gallery-container')
        let canvas = document.querySelector('.canvas-container')
@@ -192,7 +192,17 @@ function onStyleChange(property, val) {
         canvas.classList.add("display-none")
        }
        
-       
    }
 
+
+   function onCanvasClick(ev){
+     //  findTextLine(ev.offsetX , ev.offsetY)
+       console.log(ev.offsetX , ev.offsetY)
+   }
+
+function onSearch(){
+  const userInput = document.getElementById('searchInput').value.toLowerCase();
+  if (getMemeSearchResults(userInput) === 0) return
+  renderPicsToMainGallry(getMemeSearchResults(userInput))
+}
    
