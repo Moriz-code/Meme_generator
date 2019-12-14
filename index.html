@@ -26,9 +26,9 @@
                 <li>
                     <a class="nav-links" onclick="onMenuClick('MEMES')">MEMES</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a  class="nav-links">About</a>
-                </li>
+                </li> -->
             </ul>
         </nav>
     </header>
@@ -40,9 +40,9 @@
         
     <canvas id="canvas" class="main-canvas"></canvas>
 
-    <div class="tool-box">
+    <div class="tool-box ">
             <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
-            <input class="addBtn" type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
+            <input type="image" class="addBtn" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
 
             <div class="edit-text">
             <input type="image" onclick="switchline()" title="Switch line" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
@@ -53,8 +53,8 @@
             <input type="image" title="Move line down" onclick="onStyleChange('pos' , +10)" src="./imgs/icons/bottom.png">
             
 
-             <input type="color" value='#E8D5C7' title="Stroke color" onchange="onStyleChange('strokeColor' , this)">
-             <input type="color" value='#B0A3A1' title="Fill color" onchange="onStyleChange('fillColor' , this)">
+             <input type="color" value='#E8D5C7' title="Stroke" onchange="onStyleChange('strokeColor' , this)">
+             <input type="color" value='#B0A3A1' title="Fill" onchange="onStyleChange('fillColor' , this)">
         </div>
             
            
@@ -74,14 +74,14 @@
 </div>
 
 <div id="gallery" class="container gallert-options">
-    <label for="searchInput">Search</label>
-    <input class="searchInput" type="text" placeholder="What is your mode?">
+    <!-- <label for="searchInput">Search</label> -->
+    <!-- <input class="searchInput" type="text" placeholder="What is your mode?"> -->
     <!-- <ul class="popular-search">
         <li>funny</li>
         <li>stupid</li>
         <li>tired</li>
     </ul> -->
-    <label for="imageLoader">Create meme with your pic!</label>
+    <label class="imageLoadertxt">Upload your own image-></label>
     <input type="file" id="imageLoader" name="imageLoader"  onclick="onImgUpload()"/>
     
     

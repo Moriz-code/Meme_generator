@@ -56,3 +56,14 @@
     }
   }
 
+  @media screen and (max-width: 550px){
+    .container{
+      width:320px;
+      height: 100%;
+    }
+
+    .gallery-container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+  }
+  }

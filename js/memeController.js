@@ -175,7 +175,6 @@ function onStyleChange(property, val) {
 
 
     //navigation
-
    function onMenuClick(page){
        debugger
        let mainGallery = document.querySelector('.gallert-options')
