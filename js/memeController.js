@@ -45,7 +45,7 @@ function initCanvas() {
     gCtx = gCanvas.getContext('2d');
     gCurrTxtIdx = 0;
     createNewLine('topLine', 40,  'center', 'black' , 'white' , {x: (gCanvas.width / 10), y: (40)});
-    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 10), y: (450)});
+    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 10), y: (300)});
     document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
 }
 
@@ -80,7 +80,7 @@ function onTextChange(ev) {
 // }
 
 function onCreateNewLine(){
-    createNewLine( 'new line', 30, 'center' , 'black' ,'white',  {x:250, y:250});
+    createNewLine('new line', 30, 'center' , 'black' ,'white',  {x:250, y:250});
     gCurrTxtIdx++;
     document.querySelector('.lineInput').value = getLineByTxtIdx(gCurrTxtIdx);
     renderCanvas();
@@ -193,10 +193,7 @@ function onStyleChange(property, val) {
        
    }
 
-//    function onCanvasClick(ev){
-//      //  findTextLine(ev.offsetX , ev.offsetY)
-//        console.log(ev.offsetX , ev.offsetY)
-//    }
+
 
 function onSearch(){
   const userInput = document.getElementById('searchInput').value.toLowerCase();
