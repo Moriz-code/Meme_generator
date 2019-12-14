@@ -1,4 +1,4 @@
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -38,4 +38,21 @@
     .nav-links:hover {
       color: rgba(255, 255, 255, 1);
     }
+
+
   }
+
+
+  @media screen and (max-width: 1000px){
+    .container{
+      width:750px;
+    }
+  }
+
+
+  @media screen and (max-width: 780px){
+    .container{
+      width:500px;
+    }
+  }
+

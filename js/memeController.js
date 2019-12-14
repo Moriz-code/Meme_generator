@@ -41,7 +41,7 @@ function renderPicsUserGallery(){
 }
 
 function onImgClick(imgID) {
-    document.querySelector('.canvas-container').hidden = false;
+    document.querySelector('.canvas-container').classList.remove("display-none");
     updateMemeImgId(imgID);
     resizeCanvas();
     renderCanvas();
@@ -171,5 +171,29 @@ function onStyleChange(property, val) {
     // var currentMeme = getMemeToRender();
     }
 
- 
+
+
+
+    //navigation
+
+   function onMenuClick(page){
+       debugger
+       let mainGallery = document.querySelector('.gallert-options')
+       let MEMES = document.querySelector('.user-gallery-container')
+       let canvas = document.querySelector('.canvas-container')
+
+       if (page === 'Gallery'){
+        mainGallery.classList.remove("display-none")
+        MEMES.classList.add("display-none")
+        canvas.classList.add("display-none")
+       }
+       else{
+        MEMES.classList.remove("display-none")
+        mainGallery.classList.add("display-none")
+        canvas.classList.add("display-none")
+       }
+       
+       
+   }
+
    

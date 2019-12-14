@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/myStyle.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/mediaQueries.css">
-   
     <title>MEME</title>
 </head>
 
@@ -16,19 +15,19 @@
     <header>
         <nav class="navbar container">
             <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
-                <i class="fa fa-bars"></i>
+                <img class="hamburgerBtn" src="./imgs/icons/hamburger.png">
             </label>
-            <a href="#" class="logo">MEME by ME</a>
+            <a href="index.html#gallery" class="logo">MEME by ME</a>
             <input type="checkbox" id="chkToggle"></input>
             <ul class="main-nav" id="js-menu">
                 <li>
-                    <a href="index.html#gallery" class="nav-links">Gallery</a>
+                    <a class="nav-links" onclick="onMenuClick('Gallery')">Gallery</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-links">MEMES</a>
+                    <a class="nav-links" onclick="onMenuClick('MEMES')">MEMES</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-links">About</a>
+                    <a  class="nav-links">About</a>
                 </li>
             </ul>
         </nav>
@@ -37,30 +36,36 @@
     <h1></h1>
 
 
-    <div class="canvas-container container" hidden>
+    <div class="canvas-container container display-none">
         
     <canvas id="canvas" class="main-canvas"></canvas>
 
     <div class="tool-box">
             <input class="lineInput" id="0" type="text" value="" placeholder="text goes here" oninput="onTextChange(event)">
-            <input type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
-            <input type="image" onclick="switchline()" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
-            <input type="image" onclick="onStyleChange('fontsize' , -10)" src="./imgs/icons/decrease font - icon.png">
-            <input type="image" onclick="onStyleChange('fontsize' , 10)" src="./imgs/icons/increase font - icon.png">
-            Outline <input type="color" value="#E8D5C7" onchange="onStyleChange('strokeColor' , this)">
-            Fill <input type="color" value='#B0A3A1' onchange="onStyleChange('fillColor' , this)">
-            <input type="image" onclick="onStyleChange('pos' , -10)" src="./imgs/icons/top.png">  
-            <input type="image" onclick="onStyleChange('pos' , +10)" src="./imgs/icons/bottom.png">
-            <input type="image" onclick="onDelete()" src="./imgs/icons/trash.png">
+            <input class="addBtn" type="image" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
+
+            <div class="edit-text">
+            <input type="image" onclick="switchline()" title="Switch line" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
+            <input type="image" onclick="onDelete()" title="Delete line" src="./imgs/icons/trash.png">
+            <input type="image" onclick="onStyleChange('fontsize' , -10)" title="Decrease font" src="./imgs/icons/decrease font - icon.png">
+            <input type="image" onclick="onStyleChange('fontsize' , 10)" title="Increase font" src="./imgs/icons/increase font - icon.png">
+            <input type="image" title="Move line up" onclick="onStyleChange('pos' , -10)" src="./imgs/icons/top.png">  
+            <input type="image" title="Move line down" onclick="onStyleChange('pos' , +10)" src="./imgs/icons/bottom.png">
+            
+
+             <input type="color" value='#E8D5C7' title="Stroke color" onchange="onStyleChange('strokeColor' , this)">
+             <input type="color" value='#B0A3A1' title="Fill color" onchange="onStyleChange('fillColor' , this)">
+        </div>
             
            
-            
-            <button onclick="onSaving()">Save</button>
+
+        <div class="toolbox-btns">  
+            <button class="save" onclick="onSaving()">Save</button>
             <a id="download" download="canvas.png">
                 <button class="downloadBtn" type="button" onClick="onDownload()">Download</button>
             </a> 
-            <button onclick="">Share</button>
-
+            <button class="share" onclick="">Share</button>
+        </div>
             
 
     </div>
@@ -68,31 +73,36 @@
 
 </div>
 
-<div id="gallery" class="container gallert-options ">
-    <input class="searchInput" type="text" placeholder="Search..">
-    <ul class="popular-search">
+<div id="gallery" class="container gallert-options">
+    <label for="searchInput">Search</label>
+    <input class="searchInput" type="text" placeholder="What is your mode?">
+    <!-- <ul class="popular-search">
         <li>funny</li>
         <li>stupid</li>
         <li>tired</li>
-    </ul>
-    <input type="file" id="imageLoader" name="imageLoader" onclick="onImgUpload()"/>
-    </div>
+    </ul> -->
+    <label for="imageLoader">Create meme with your pic!</label>
+    <input type="file" id="imageLoader" name="imageLoader"  onclick="onImgUpload()"/>
+    
     
     <div class="display-grid container">
         <ul class="gallery-container"></ul>
     </div>
+</div>
 
-  
-    <div class="container">
-        <ul class="user-gallery-container"></ul>
+<div id="user-gallery">
+        <ul class="user-gallery-container gallery-container container display-none" ></ul>
     </div>
+
+    <footer> </footer>
+
 
     </div>
     <script src="./js/storageService.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/memeService.js"></script>
     <script src="./js/memeController.js"></script>
-    <script src="./js/userGalleryController.js"></script>
+    <!-- <script src="./js/userGalleryController.js"></script> -->
 </body>
 
 
