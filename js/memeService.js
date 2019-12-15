@@ -1,24 +1,96 @@
 'use strict'
 let gImgId = 0;
 
-let gImgs = [{id: gImgId++,url: 'imgs/000.jpg', keywords: ['funny']},
-    {id:  gImgId++, url: 'imgs/001.jpg', keywords: ['dogs']},
-    {id:  gImgId++, url: 'imgs/002.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/003.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/004.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/005.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/006.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/007.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/008.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/009.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/010.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/011.jpg', keywords: ['cats']},
-    {id:  gImgId++, url: 'imgs/012.jpg', keywords: ['cats']},
-    {id:  gImgId++, url: 'imgs/013.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/014.jpg', keywords: ['love']},
-    {id:  gImgId++, url: 'imgs/015.jpg', keywords: ['funny']},
-    {id:  gImgId++, url: 'imgs/016.jpg', keywords: ['funny']},
-    {id:  gImgId++, url: 'imgs/017.jpg', keywords: ['game']},
+let gImgs = [{
+        id: gImgId++,
+        url: 'imgs/000.jpg',
+        keywords: ['funny']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/001.jpg',
+        keywords: ['dogs']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/002.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/003.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/004.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/005.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/006.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/007.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/008.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/009.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/010.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/011.jpg',
+        keywords: ['cats']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/012.jpg',
+        keywords: ['cats']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/013.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/014.jpg',
+        keywords: ['love']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/015.jpg',
+        keywords: ['funny']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/016.jpg',
+        keywords: ['funny']
+    },
+    {
+        id: gImgId++,
+        url: 'imgs/017.jpg',
+        keywords: ['game']
+    },
 ]
 
 let gMeme = {
@@ -38,79 +110,92 @@ function getImgByID(imgID) {
 }
 
 // userUploadMeme
-function createUserMeme(){
+function createUserMeme() {
     updateMemeObj()
     addUserImgToGallery()
 }
 
-function addUserImgToGallery(){
+function addUserImgToGallery() {
     let newImg = {
         id: gImgId++,
-        url: loadFromStorage('meme' , ''), 
+        // const keys from storage should always ba at the top of the file. 
+        url: loadFromStorage('meme', ''),
         // keywords: ['']
     }
     gImgs.push(newImg);
 }
 
+// this is initMemeObj
 function updateMemeObj() {
     gMeme = {
         selectedImgId: gImgId,
         selectedTxtIdx: 0,
         txts: []
     }
-    createNewLine('topLine', 40,  'center', 'black' , 'white' , {x: (gCanvas.width / 8), y: (gCanvas.height / 5)}); 
-    createNewLine('bottomLine', 40,  'center', 'black' , 'white', {x: (gCanvas.width / 8), y: (gCanvas.height - 30)});
+    createNewLine('topLine', 40, 'center', 'black', 'white', {
+        x: (gCanvas.width / 8),
+        y: (gCanvas.height / 5)
+    });
+    createNewLine('bottomLine', 40, 'center', 'black', 'white', {
+        x: (gCanvas.width / 8),
+        y: (gCanvas.height - 30)
+    });
 }
 
-
-function getMemeToRender(){
-   return gMeme
+// no need to mention 'toRender'
+function getMemeToRender() {
+    return gMeme
 }
 
-function updateMemeImgId(id){
+function updateMemeImgId(id) {
     gMeme.selectedImgId = id
 }
 
-function updateText(property, TxtIdx, val){
+function updateText(property, TxtIdx, val) {
     gMeme.selectedTxtIdx = TxtIdx;
+    // switch case
     if (property === 'fontsize') {
-    if (gMeme.txts[TxtIdx][property] + val < 20) return;
+        if (gMeme.txts[TxtIdx][property] + val < 20) return;
         gMeme.txts[TxtIdx][property] += val;
-    }
-    else if (property === 'pos'){
+    } else if (property === 'pos') {
         gMeme.txts[TxtIdx][property].y += val;
-    }
-    else{
+    } else {
         gMeme.txts[TxtIdx][property] = val;
     }
 }
 
-
-function createNewLine(line = 'new line' , fontsize = 30 , align = 'center', strokeColor = 'black', fillColor = 'white', pos = {x: 50 , y:200}){
-       gMeme.txts.push ({
+//do it like todos and todo. 
+function createNewLine(line = 'new line',
+    fontsize = 30,
+    align = 'center',
+    strokeColor = 'black',
+    fillColor = 'white',
+    pos = {
+        x: 50,
+        y: 200
+    }) {
+    gMeme.txts.push({
         line,
         fontsize,
         align,
         strokeColor,
         fillColor,
         pos
-    } 
-    ) 
-    
+    })
+
+}
+// Function can return the entire txt obj instead of just the property
+function getLineByTxtIdx(TxtIdx) {
+    return gMeme.txts[TxtIdx].line;
 }
 
-function getLineByTxtIdx(TxtIdx){
-    return gMeme.txts[TxtIdx].line;    
-}
-
-function deleteLine(TxtIdx){
+function deleteLine(TxtIdx) {
     gMeme.selectedTxtIdx = TxtIdx;
-    return gMeme.txts.splice(TxtIdx,1);
+    return gMeme.txts.splice(TxtIdx, 1);
 }
 
-   function getMemeSearchResults(userInput){
-     var searchResults = gImgs.filter((img => img.keywords.includes(userInput)))
-      return searchResults
+// getFilteredImages
+function getMemeSearchResults(userInput) {
+    var searchResults = gImgs.filter((img => img.keywords.includes(userInput)))
+    return searchResults
 }
-   
-
