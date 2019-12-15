@@ -89,6 +89,9 @@
   grid-template: none;
 
 }
+.imageLoadertxt{
+  display: none;
+}
 }
 
 @media screen and (max-width: 550px){
@@ -107,6 +110,10 @@
   display: inline-block;
   font-size: 20px;
   font-weight: 500;
+}
+
+.canvas-container {
+  margin-top: 7px;
 }
 
 }

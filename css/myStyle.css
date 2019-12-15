@@ -22,7 +22,7 @@
 
 body{
   max-width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 html {
@@ -87,6 +87,7 @@ navBar */
 }
 
 .logo {
+  cursor: pointer;
   display: inline-block;
   font-size: 40px;
   font-weight: 500;
@@ -113,7 +114,7 @@ grid */
 .gallery-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   justify-content: center;
