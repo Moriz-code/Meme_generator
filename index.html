@@ -12,5 +12,104 @@
     <title>MEME</title>
 </head>
 
+<body onload="init()">
+    <header>
+        <nav class="navbar container">
+            <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+                <img class="hamburgerBtn" src="./imgs/icons/hamburger.png">
+            </label>
+            <a class="logo" onclick="onMenuClick('Gallery')">MEME by ME</a>
+            <input type="checkbox" id="chkToggle"></input>
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <a class="nav-links" onclick="onMenuClick('Gallery')">Gallery</a>
+                </li>
+                <li>
+                    <a class="nav-links" onclick="onMenuClick('MEMES')">MEMES</a>
+                </li>
+                <!-- <li>
+                    <a  class="nav-links">About</a>
+                </li> -->
+            </ul>
+        </nav>
+    </header>
+    
+    <h1></h1>
+
+
+    <div class="canvas-container container display-none">
+        
+    <canvas id="canvas" class="main-canvas" onclick="onCanvasClick(event)"></canvas>
+
+    <div class="tool-box">
+            <input class="lineInput" id="0" type="text" value="" placeholder="text goes here"  oninput="onTextChange(event)">
+            <input type="image" class="addBtn" onclick="onCreateNewLine()" title="Add line" src="./imgs/icons/add.png">
+
+            <div class="edit-text">
+            <input type="image" onclick="switchline()" title="Switch line" src="./imgs/icons/up-and-down-opposite-double-arrows-side-by-side.png">
+            <input type="image" onclick="onDelete()" title="Delete line" src="./imgs/icons/trash.png">
+            <input type="image" onclick="onStyleChange('fontsize' , -10)" title="Decrease font" src="./imgs/icons/decrease font - icon.png">
+            <input type="image" onclick="onStyleChange('fontsize' , 10)" title="Increase font" src="./imgs/icons/increase font - icon.png">
+            <input type="image" title="Move line up" onclick="onStyleChange('pos' , -10)" src="./imgs/icons/top.png">  
+            <input type="image" title="Move line down" onclick="onStyleChange('pos' , +10)" src="./imgs/icons/bottom.png">
+
+             <input type="color" value='#E8D5C7' title="Stroke" onchange="onStyleChange('strokeColor' , this.value)">
+             <input type="color" value='#B0A3A1' title="Fill" onchange="onStyleChange('fillColor' , this.value)">
+        </div>
+            
+           
+
+        <div class="toolbox-btns">  
+            <button class="save" onclick="onSaving()">Save to your Gallery</button>
+            <a id="download" download="canvas.png">
+                <button class="downloadBtn" type="button" onClick="onDownload()">Download</button>
+            </a> 
+
+
+            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                <input name="img" id="imgData" type="hidden" />
+                <button class="share" type="submit">Publish</button>
+                <div class="share-container"></div>
+              </form>
+        </div>
+            
+
+    </div>
+
+
+</div>
+
+<div id="gallery" class="container gallert-options">
+    <!-- <label for="searchInput">Search</label> -->
+     <input id="searchInput" value="" type="text" oninput="onSearch()"placeholder="Search MEME">
+    <!-- <ul class="popular-search">
+        <li>funny</li>
+        <li>stupid</li>
+        <li>tired</li>
+    </ul> -->
+    <label class="imageLoadertxt">Upload your own image-></label>
+    <input type="file" id="imageLoader" name="imageLoader"  onclick="onImgUpload()"/>
+    
+    
+    <div class="display-grid container">
+        <ul class="gallery-container"></ul>
+    </div>
+</div>
+
+<div id="user-gallery">
+        <ul class="user-gallery-container gallery-container container display-none" ></ul>
+    </div>
+
+    <footer> </footer>
+
+
+    </div>
+    <script src="./js/storageService.js"></script>
+    <script src="./js/memeService.js"></script>
+    <script src="./js/memeController.js"></script>
+    <script src="./js/upload-service.js"></script>
+    <!-- <script src="./js/userGalleryController.js"></script> -->
+</body>
+
 
 </html>

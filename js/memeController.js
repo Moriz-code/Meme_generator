@@ -136,33 +136,30 @@ function onStyleChange(property, val) {
 
         }
     
-    function handleImage(ev){
-    var reader = new FileReader();
-    var img = new Image();
-        reader.onload = function(event){
-            img.onload = function(){
-                var scaleFactor = gCanvas.width / img.width
-                var scale = Math.min((scaleFactor/img.width),(scaleFactor/img.height));
-                img.width = img.width*scale;
-                img.height = img.height*scale;
-                //gCtx.drawImage(img,0,0);
-                gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        function handleImage(ev){
+            var reader = new FileReader();
+            var img = new Image();
+                reader.onload = function(event){
+                    img.onload = function(){
+                        var scaleFactor = gCanvas.width / img.width
+                        var scale = Math.min((scaleFactor/img.width),(scaleFactor/img.height));
+                        img.width = img.width*scale;
+                        img.height = img.height*scale;
+                        //gCtx.drawImage(img,0,0);
+                        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+                        createUserMeme();
+                        renderCanvas();              
+                    }    
                    
-            }    
-           
-            img.src = event.target.result;
-            saveToStorage('meme', img.src);       
-        }
-        reader.readAsDataURL(ev.target.files[0]);
-        createUserMeme();
-        renderCanvas();
-       
-        
-        document.querySelector('.canvas-container').classList.remove("display-none")
-        document.querySelector('.gallert-options').classList.add("display-none")
-
-        
-    }
+                    img.src = event.target.result;
+                    saveToStorage('meme', img.src);       
+                }
+                reader.readAsDataURL(ev.target.files[0]);
+               
+                
+                document.querySelector('.canvas-container').classList.remove("display-none")
+                document.querySelector('.gallert-options').classList.add("display-none") 
+            }
 
     //save to gallery
     function onSaving(){
