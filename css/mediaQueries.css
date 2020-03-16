@@ -16,6 +16,7 @@
     margin-right: 30px;
     flex-direction: row;
     justify-content: flex-end;
+    
   }
 
   .main-nav li {
@@ -60,7 +61,7 @@
   }
   
   header{
-    height:65px;
+    height:70px;
   }
 }
 
@@ -108,7 +109,7 @@
 
 .logo {
   display: inline-block;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
 }
 
